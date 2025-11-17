@@ -1,0 +1,16 @@
+<div class="card">
+  @if(parentHeader()){
+  <div>
+    <h1>{{ parentHeader() }}</h1>
+  </div>
+  }
+  <div class="card-header" [style.color]="currentColor()">
+    <ng-content select="#card-title"></ng-content>
+  </div>
+  <div class="card-body">
+    <ng-content select="#card-body"></ng-content>
+  </div>
+  <div class="card-footer">
+    <ng-content select="#card-footer"></ng-content>
+  </div>
+</div>

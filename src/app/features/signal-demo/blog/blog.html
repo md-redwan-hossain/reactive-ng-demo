@@ -1,0 +1,22 @@
+<button (click)="loadTodoData()">Load Data</button>
+<br />
+<br />
+@if (dataFromApi.hasValue()) {
+  <button (click)="updateColorInChild()">Toggle Color</button>
+}
+
+<br />
+<br />
+
+@if (dataFromApi.hasValue()) {
+  @for (item of dataFromApi.value(); track $index) {
+    <app-card #card [parentHeader]="$first ? `First Card` : undefined">
+      <h1 id="card-title">{{ item.title }}</h1>
+      <h2 id="card-body">{{ item.body }}</h2>
+    </app-card>
+  }
+} @else if (dataFromApi.isLoading()) {
+  <h1>Data is loading...</h1>
+} @else {
+  <h1>No Data available</h1>
+}
